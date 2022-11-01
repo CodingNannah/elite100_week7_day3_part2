@@ -8,7 +8,10 @@ JS Function that takes in an:
     - if the user asked to remove an item not in the cart, just return the cart unchanged
 CATCH:
     Perform each of these actions as an Out-of-Place (the cart object that was inputted will never be changed and we will return a brand new copy of cart [array]) algorithm, not In-Place
+************* I believe splice is In-place!
 */
+
+console.log("Start!")
 
 // JS Object (dictionary)
 let items = {
@@ -24,52 +27,46 @@ let items = {
 };
 
 // Cart Array
- let cart = []
+let cart = []
 
 function cartAction(action, item) {
-    switch(cartAction) {
+    switch(action) {
         case "add":
             cart.push(item);
-            console.log(cart);
             break;
         case "removeOne":
-            if(array.includes[i]){
-                cart.splice(cart.indexOf(item),1);
-                    console.log(cart);
-            }
-            else (!array.includes[i]){
-                    console.log(cart);
-            };
+            cart.splice(cart.indexOf(item), 1)
             break;
         case "removeAllSameItem":
-            for(i=0; i<cart.length;i++){
-                if (cart[i] == item){    
-                    cart.clear(item)
-                    count -= 1
-                console.log(cart);
-                break;
-                    }
-                };
+            count = 0
+            for (i = 0; i < cart.length; i++){
+                if (cart[i] == item){ 
+                    cart.splice(cart.indexOf(item), 1)
+                    count += 1
+                } 
+            }; break;
         case "clear":
             cart = [];
-            console.log(cart);
+            console.log("Your cart is empty.")
             break;
     }
+    console.log(cart);
 };
 
 
-cartAction("add","weights")
-cartAction("add","yoga pants")
-cartAction("add","yoga pants")
-cartAction("add","swimsuit")
-cartAction("add","weights")
-cartAction("add","protein drink")
-cartAction("add","meal replacement bars")
-cartAction("add","protein drink")
-cartAction("add","meal replacement bars")
+    cartAction("add","weights")
+    cartAction("add","swimsuit")
+    cartAction("add","meal replacement bars")
+    cartAction("add","meal replacement bars")
+    cartAction("add","protein drink")
+    cartAction("add","yoga pants")
+    cartAction("add","yoga pants")
+    cartAction("add","weights")
+    cartAction("add","swimsuit")
+    cartAction("add","weights")
 
+    // cartAction("removeOne","swimsuit")
 
-cartAction("removeOne","meal replacement bars")
+    // cartAction("removeAllSameItem","weights")
 
-cartAction("removeAllSameItem","weights")
-
+    cartAction("clear")
